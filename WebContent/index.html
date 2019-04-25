@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weatherapp</title>
+<link rel="stylesheet" href="styles/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="styles/index.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="scripts/jquery-3.3.1.min.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+</head>
+<body>
+	<div id=contentContainer>
+		<div id=dashboardTitle>
+			<h1>
+				<b>Dashboard</b>
+			</h1>
+			<hr>
+		</div>
+		<div class=gridContainer>
+			<div class="w3-card w3-round w3-margin w3-hover-shadow" id=ipData>
+				<div class="cardLabel w3-padding-16">
+					<b>Current Location</b>
+				</div>
+				<div class="w3-padding-16" id=ipDataContent>
+					<table id=ipDataTable>
+						<tr>
+							<td><i class="fas fa-globe"></i>&emsp;Country:</td>
+							<td><label id=Land></label></td>
+						<tr>
+						<tr>
+							<td><i class="fas fa-city"></i>&emsp;City:</td>
+							<td><label id=City></label></td>
+						</tr>
+						<tr>
+							<td><i class="fas fa-globe-americas"></i>&emsp;Regio:</td>
+							<td><label id=Regio></label></td>
+						</tr>
+						<tr>
+							<td><i class="fas fa-mail-bulk"></i>&emsp;ZipCode:</td>
+							<td><label id=ZipCode></label></td>
+						</tr>
+						<tr>
+							<td><i class="fas fa-clock"></i>&emsp;TimeZone:</td>
+							<td><label id=TimeZone></label></td>
+						</tr>
+						<tr>
+							<td><i class="fas fa-map-marked-alt"></i>&emsp;Latitude</td>
+							<td><label id=lat></label></td>
+						</tr>
+						<tr>
+							<td><i class="fas fa-map-marked-alt"></i>&emsp;Longitude</td>
+							<td><label id=lon></label></td>
+						</tr>
+						<tr>
+							<td><i class="fas fa-address-card"></i>&emsp;IP Adress</td>
+							<td><label id=IP></label></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="w3-card w3-round w3-margin" id=locationMap>
+				<div class="cardLabel w3-padding-16">
+					<b>Map of <label id=currentLocation></label></b>
+				</div>
+				<div class="w3-padding-16" id=ipDataContent>
+				<div id=mapContainer>
+					<div id=map></div>
+					</div>
+				</div>
+			</div>
+			<div class="w3-card w3-round w3-margin" id=weatherData>
+				<div class="cardLabel w3-padding-16">
+					<b>Weather in <label id=currentWeather></label></b>
+				</div>
+				<div class="w3-padding-16" id=weatherDataContent>
+				<table id=weatherDataTable>
+					<tr>
+						<td><i class="fas fa-thermometer-half"></i>&emsp;Temperature:</td>
+						<td><label id=Temperature></label></td>
+					<tr>
+					<tr>
+						<td><i class="fas fa-sun"></i>&emsp;Forecast:</td>
+						<td><label id=Forecast></label></td>
+					</tr>
+					<tr>
+						<td><i class="fas fa-tint"></i>&emsp;Humidity:</td>
+						<td><label id=Humidity></label></td>
+					</tr>
+					<tr>
+						<td><i class="fas fa-wind"></i>&emsp;Wind speed:</td>
+						<td><label id=Windspeed></label></td>
+					</tr>
+					<tr>
+						<td><i class="fas fa-compass"></i>&emsp;Wind direction:</td>
+						<td><label id=Winddirection></label></td>
+					</tr>
+					<tr>
+						<td><i class="fas fa-sun"></i>&emsp;Sunrise</td>
+						<td><label id=Sunrise></label></td>
+					</tr>
+					<tr>
+						<td><i class="fas fa-sun"></i>&emsp;Sunset</td>
+						<td><label id=Sunset></label></td>
+					</tr>
+				</table>
+			</div>
+			</div>
+			<div class="w3-card w3-round w3-margin "
+				id=countryTableContainer>
+				<table id=countryTable>
+					<tr>
+						<th><div><label style=width:80%;float:left;padding-top:10px;>Country</label></div><div style=float:left;width:20%; id=addCountry><img style="height:46px;" src=images/addButton.png></img></div></th>
+						<th>Capital</th>
+						<th>Region</th>
+						<th>Surface Area</th>
+						<th>Population</th>
+						<th>Edit</th>
+					</tr>
+				</table>
+			</div>
+			<!-- The Modal -->
+<div id="modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div style=margin-top:16px; class=container>
+  <form id=countryForm>
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">ISO Code</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="iso2" placeholder="Enter ISO2 code..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">ISO3 Code</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="iso3" placeholder="Enter ISO3 code..">
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="lname">Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="name" placeholder="Enter Country name..">
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="lname">Capital</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="cap" placeholder="Enter Capital name..">
+    </div>
+  </div>
+  </form>
+		
+	<button style=margin-top:24px; id=submitForm>Submit</button>
+  </div>
+  </div>
+  </div>
+  
+  <div id="modal2" class="modal">
+  <div class="modal-content">
+        <span class="close">&times;</span>
+    <div style=margin-top:16px;min-height:450px; class=container>
+  <form id=countryEditForm>
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">ISO Code</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="iso2" placeholder="Enter ISO2 code..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">ISO3 Code</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="iso3" placeholder="Enter ISO3 code..">
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="lname">Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="name" placeholder="Enter Country name..">
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="lname">Capital</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="cap" placeholder="Enter Capital name..">
+    </div>
+  </div>
+      <div class="row">
+    <div class="col-25">
+      <label for="lname">Region</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="region" placeholder="Enter Region name..">
+    </div>
+  </div>
+      <div class="row">
+    <div class="col-25">	
+      <label for="lname">Population</label>
+    </div>
+    <div class="col-75">
+      <input type="number" name="population" placeholder="Enter Population..">
+    </div>
+  </div>
+  </form>
+		
+	<button style=margin-top:24px; id=submitEditForm>Save Changes</button>
+  </div>
+  </div>
+
+</div>
+			
+		</div>
+	</div>
+	<footer>This project was made by Lucca Huijgens</footer>
+</body>
+<script src="scripts/index.js"></script>
+</html>
