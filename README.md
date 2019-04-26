@@ -6,4 +6,4 @@ The application uses a front-end that utilizes CSS, HTML5 and JavaScript. The ap
 
 ## Screenshots
 ![alt text](https://raw.githubusercontent.com/luccahuijgens/WeatherApp/master/index.png)
-**Get a quick overview of the weather in various cities
+**Get a quick overview of the weather in various cities**
