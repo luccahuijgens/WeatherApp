@@ -5,7 +5,7 @@ function fillCountryTable(){
 	$.getJSON("restservices/countries",function(countries){
 		$.each(countries,function(i,country){
 			$("#countryTable").append("<tr onclick=fillWeatherData("+country.lat+","+country.lon+",\""+encodeURIComponent(country.capital)+"\");fillMap("+country.lat+","+country.lon+",\""+encodeURIComponent(country.capital)+"\");resetFocus(); ><td>"
-			+country.name+"</td>"
+			+"<img src=https://www.countryflags.io/"+country.code+"/shiny/64.png>&emsp;"+country.name+"</td>"
 			+"<td>"+country.capital+"</td>"
 			+"<td>"+country.region+"</td>"
 			+"<td>"+country.surface+"</td>"

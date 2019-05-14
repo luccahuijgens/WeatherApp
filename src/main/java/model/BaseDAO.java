@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class BaseDAO {
-	public final String url = "jdbc:postgresql://localhost:5432/worlddb";
-	public final String username = "postgres";
-	public final String password = "Burdeos1";
+	public static final String url = "jdbc:postgresql://localhost:5432/worlddb";
+	public static final String username = "postgres";
+	public static final String password = "Burdeos1";
 
 	public BaseDAO() {
 	}

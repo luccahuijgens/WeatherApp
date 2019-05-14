@@ -1,0 +1,58 @@
+
+2model.BaseDAO#getConnection()Ljava/sql/Connection;a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java (#"1*Á
+1a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java (ê
+ç
+a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java (
+conjava.sql.Connection"__id*
+""Î
+Ë
+a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java ((
+%0java.lang.Class"<java.lang.Class#forName(Ljava/lang/String;)Ljava/lang/Class;*"
+java.lang.Class*
+org.postgresql.Driver†
+ù
+a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java$ ('
+%1java.lang.String"__id**
+model.BaseDAO"
+url•
+¢
+a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java) (1
+%2java.lang.String"__id**
+model.BaseDAO"
+
+username•
+¢
+a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java3 (;
+%3java.lang.String"__id**
+model.BaseDAO"
+
+passwordﬁ
+€
+a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java (<
+%4java.sql.Connection"qjava.sql.DriverManager#getConnection(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/sql/Connection;*"
+java.sql.DriverManager*
+
+%1java.lang.String*
+
+%2java.lang.String*
+
+%3java.lang.String•
+¢
+a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java (<
+conjava.sql.Connection"__id*
+
+%4java.sql.Connection"Å
+a
+WC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\model\BaseDAO.java (
+
+conjava.sql.ConnectionB
+model.BaseDAO

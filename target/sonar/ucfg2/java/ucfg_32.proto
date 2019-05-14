@@ -1,0 +1,24 @@
+
+3service.CountryService#addCountry(Lmodel/Country;)Zj
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java( (("1*¡
+1j
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java)	 )(º
+·
+j
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java)	 )(
+%0model.ICountryDAO"__id***(
+service.CountryService"
+
+countrydaoüù
+j
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java)	 )(!
+%1boolean".model.ICountryDAO#addCountry(Lmodel/Country;)Z*
+
+%0model.ICountryDAO*
+
+cmodel.Country2addCountry(Lmodel/Country;)"t
+j
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java) )("
+"":
+cmodel.CountryB
+service.CountryService

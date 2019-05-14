@@ -1,0 +1,141 @@
+
+Ywebservices.CountryRestService#convertJson(Lmodel/Country;)Ljavax/json/JsonObjectBuilder;r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaz z(&"1*≥.
+1r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java{ {(ı
+Ú
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java{ {(4"
+%0javax.json.JsonObjectBuilder"Cjavax.json.Json#createObjectBuilder()Ljavax/json/JsonObjectBuilder;*"
+javax.json.Json»
+≈
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java{ {(5#
+jobjavax.json.JsonObjectBuilder"__id*$
+"
+%0javax.json.JsonObjectBuilder€ÿ
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java| |(
+%1java.lang.String")model.Country#getName()Ljava/lang/String;*
+
+cmodel.Country2	getName()˜Ù
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java| |("
+%2javax.json.JsonObjectBuilder"djavax.json.JsonObjectBuilder#add(Ljava/lang/String;Ljava/lang/String;)Ljavax/json/JsonObjectBuilder;*%
+#
+jobjavax.json.JsonObjectBuilder*
+name*
+
+%1java.lang.String2)add(Ljava/lang/String;Ljava/lang/String;)·ﬁ
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java} }(#
+%3java.lang.String",model.Country#getCapital()Ljava/lang/String;*
+
+cmodel.Country2getCapital()˙˜
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java} }($"
+%4javax.json.JsonObjectBuilder"djavax.json.JsonObjectBuilder#add(Ljava/lang/String;Ljava/lang/String;)Ljavax/json/JsonObjectBuilder;*%
+#
+jobjavax.json.JsonObjectBuilder*	
+capital*
+
+%3java.lang.String2)add(Ljava/lang/String;Ljava/lang/String;)ﬂ‹
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java~ ~(!
+%5java.lang.String"+model.Country#getRegion()Ljava/lang/String;*
+
+cmodel.Country2getRegion()˘ˆ
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java~ ~(""
+%6javax.json.JsonObjectBuilder"djavax.json.JsonObjectBuilder#add(Ljava/lang/String;Ljava/lang/String;)Ljavax/json/JsonObjectBuilder;*%
+#
+jobjavax.json.JsonObjectBuilder*
+
+region*
+
+%5java.lang.String2)add(Ljava/lang/String;Ljava/lang/String;)∆√
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java (#
+%7double"model.Country#getSurface()D*
+
+cmodel.Country2getSurface()ŒÀ
+r
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.java ($"
+%8javax.json.JsonObjectBuilder"Sjavax.json.JsonObjectBuilder#add(Ljava/lang/String;D)Ljavax/json/JsonObjectBuilder;*%
+#
+jobjavax.json.JsonObjectBuilder*	
+surface*
+
+%7double2add(Ljava/lang/String;D)À»
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÄ Ä()	
+%9int"model.Country#getPopulation()I*
+
+cmodel.Country2getPopulation()—Œ
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÄ Ä(*#
+%10javax.json.JsonObjectBuilder"Sjavax.json.JsonObjectBuilder#add(Ljava/lang/String;I)Ljavax/json/JsonObjectBuilder;*%
+#
+jobjavax.json.JsonObjectBuilder*
+
+population*
+	
+%9int2add(Ljava/lang/String;I)À»
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÅ Å( 
+%11double"model.Country#getLatitude()D*
+
+cmodel.Country2getLatitude()ŒÀ
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÅ Å(!#
+%12javax.json.JsonObjectBuilder"Sjavax.json.JsonObjectBuilder#add(Ljava/lang/String;D)Ljavax/json/JsonObjectBuilder;*%
+#
+jobjavax.json.JsonObjectBuilder*
+lat*
+
+%11double2add(Ljava/lang/String;D)Õ 
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÇ Ç(!
+%13double"model.Country#getLongitude()D*
+
+cmodel.Country2getLongitude()ŒÀ
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÇ Ç("#
+%14javax.json.JsonObjectBuilder"Sjavax.json.JsonObjectBuilder#add(Ljava/lang/String;D)Ljavax/json/JsonObjectBuilder;*%
+#
+jobjavax.json.JsonObjectBuilder*
+lon*
+
+%13double2add(Ljava/lang/String;D)ﬁ€
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÉ É(
+%15java.lang.String")model.Country#getCode()Ljava/lang/String;*
+
+cmodel.Country2	getCode()˚¯
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÉ É(#
+%16javax.json.JsonObjectBuilder"djavax.json.JsonObjectBuilder#add(Ljava/lang/String;Ljava/lang/String;)Ljavax/json/JsonObjectBuilder;*%
+#
+jobjavax.json.JsonObjectBuilder*
+code*
+
+%15java.lang.String2)add(Ljava/lang/String;Ljava/lang/String;)Ê„
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÑ Ñ(!
+%17java.lang.String"-model.Country#getIso3Code()Ljava/lang/String;*
+
+cmodel.Country2getIso3Code()˚¯
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÑ Ñ("#
+%18javax.json.JsonObjectBuilder"djavax.json.JsonObjectBuilder#add(Ljava/lang/String;Ljava/lang/String;)Ljavax/json/JsonObjectBuilder;*%
+#
+jobjavax.json.JsonObjectBuilder*
+iso3*
+
+%17java.lang.String2)add(Ljava/lang/String;Ljava/lang/String;)"ù
+t
+hC:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\webservices\CountryRestService.javaÖ Ö(%
+#
+jobjavax.json.JsonObjectBuilder:
+cmodel.CountryB" 
+webservices.CountryRestService

@@ -51,7 +51,7 @@ public class CountryRestService {
 	@Path("/largestsurfaces")
 	@GET
 	@Produces("application/json")
-	public String LargestSurf() {
+	public String getLargestSurfaces() {
 		JsonArrayBuilder jab = Json.createArrayBuilder();
 		List<Country> countrylist = service.get10LargestSurfaces();
 		for (Country c : countrylist) {
@@ -64,7 +64,7 @@ public class CountryRestService {
 	@Path("/largestpopulations")
 	@GET
 	@Produces("application/json")
-	public String LargestPop() {
+	public String getLargestPopulations() {
 		JsonArrayBuilder jab = Json.createArrayBuilder();
 		List<Country> countrylist = service.get10LargestPopulations();
 

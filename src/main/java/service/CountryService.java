@@ -3,11 +3,23 @@ package service;
 import java.util.List;
 
 import model.Country;
-import model.CountryDAO;
+import model.CountryDAOImpl;
+import model.ICountryDAO;
 
 public class CountryService {
-
-	private CountryDAO countrydao = new CountryDAO();
+	private static CountryService instance=null;
+	
+	private CountryService() {
+		countrydao=new CountryDAOImpl();
+	}
+	
+	public static CountryService getInstance() {
+		if (instance==null) {
+			instance=new CountryService();
+		}
+		return instance;
+	}
+	private ICountryDAO countrydao;
 
 	public List<Country> getAllCountries() {
 		return countrydao.getCountries();

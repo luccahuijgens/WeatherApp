@@ -1,0 +1,22 @@
+
+=service.CountryService#get10LargestSurfaces()Ljava/util/List;j
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java   (*"1*·
+1j
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java!	 !(º
+·
+j
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java!	 !(
+%0model.ICountryDAO"__id***(
+service.CountryService"
+
+countrydaoüù
+j
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java!	 !(*
+%1java.util.ArrayList"=model.ICountryDAO#get10LargestSurfaces()Ljava/util/ArrayList;*
+
+%0model.ICountryDAO2get10LargestSurfaces()"‰
+j
+`C:\Users\Lucca.LAPTOP-PKB9NQVU\EclipseProjects\weather\src\main\java\service\CountryService.java! !(+
+
+%1java.util.ArrayListB
+service.CountryService
