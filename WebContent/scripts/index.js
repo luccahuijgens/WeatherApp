@@ -1,5 +1,9 @@
+initPage();
+
+function initPage(){
 fillCountryTable();
 fillIPData();
+}
 
 function fillCountryTable(){
 	$.getJSON("restservices/countries",function(countries){
@@ -132,54 +136,7 @@ function fillMap(lat,lon,name){
     return map;
 }
 
-function convertTemp(temperature){
-	var temp=Math.round(temperature-273);
-	return temp;
-}
-function convertTime(time){
-var date = new Date(time*1000);
-var hours = date.getHours();
-var minutes = "0" + date.getMinutes();
-var seconds = "0" + date.getSeconds();
-var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-return formattedTime;}
 
-function convertSpeed(speed){
-	var newspeed=Math.round(speed*3.6)
-	return newspeed;
-}
-
-function direction(dir){
-	var direct="";
-	if (dir == null){
-		direct="Not Available";
-	}
-	if (dir<22.5||dir>337.5){
-		direct="North";
-	}
-	if (dir<67.5||dir>22.5){
-		direct="NorthEast";
-	}
-	if (dir<122.5||dir>67.5){
-		direct="East";
-	}
-	if (dir<157.5||dir>112.5){
-		direct="SouthEast";
-	}
-	if (dir<202.5||dir>157.5){
-		direct="South";
-	}
-	if (dir<247.5||dir>202.5){
-		direct="SouthWest";
-	}
-	if (dir<292.5||dir>247.5){
-		direct="West";
-	}
-	if (dir<337.5||dir>292.5){
-		direct="NorthWest"
-	}
-	return direct;
-}
 
 //Get the modal
 var modal = document.getElementById('modal');
@@ -219,8 +176,13 @@ $.ajax({
     url: "restservices/countries",
     data: dataString,
     success: function() {
-    }});
-return false;
+    	alert("The new country has been added to the database.");
+    	modal.style.display = "none";
+    },
+error: function(){
+	alert("An error occured while submitting the new country. Maybe another country with the given iso2/iso3 code already exists?")
+}}
+);
 });
 
 //Get the modal
@@ -242,8 +204,9 @@ window.onclick = function(event) {
 }
 
 function openEditModal(code){
-	 $.getJSON("restservices/countries?countryCode="+code,function(country){
+	 $.getJSON("restservices/countries/"+code,function(country){
 	 var myForm=document.getElementById('countryEditForm');
+	 myForm['oldIso'].value=country.iso3;
 	 myForm['iso2'].value=country.code;
 	 myForm['iso3'].value=country.iso3;
 	 myForm['name'].value=country.name;
@@ -256,18 +219,40 @@ function openEditModal(code){
 
 $('#submitEditForm').click(function(){
 	var myForm=document.getElementById('countryEditForm');
-	 var iso2=myForm['iso2'].value
-	 var iso3=myForm['iso3'].value
+	 var oldIso=myForm['oldIso'].value;
+	 var iso2=myForm['iso2'].value;
+	 var iso3=myForm['iso3'].value;
 	 var name=myForm['name'].value;
 	 var cap=myForm['cap'].value;
-	 var region=myForm['region'].value;
 	 var population=myForm['population'].value;
-	var dataString="name="+name+"&iso2="+iso2+"&iso3="+iso3+"&cap="+cap+"&region="+region+"&population="+population;
+	 var region=myForm['region'].value;
+	 var dataString="name="+name+"&iso2="+iso2+"&iso3="+iso3+"&cap="+cap+"&population="+population+"&region="+region;
 	$.ajax({
 	    type: "PUT",
-	    url: "restservices/countries/"+iso2,
-	    data: dataString,
+	    url: "restservices/countries/"+oldIso,
+	    data:dataString,
 	    success: function() {
+	    	alert("Country updated.");
+	    	modal2.style.display = "none";
+	    },
+	    error: function(){
+	    	alert("An error occured while submitting the changes. Maybe another country with the given iso2/iso3 code already exists?")
+	    }});
+	return false;
+	});
+
+$('#deleteEditForm').click(function(){
+	var myForm=document.getElementById('countryEditForm');
+	 var iso3=myForm['iso3'].value;
+	$.ajax({
+	    type: "DELETE",
+	    url: "restservices/countries/"+iso3,
+	    success: function() {
+	    	alert("Country deleted!");
+	    	modal2.style.display = "none";
+	    },
+	    error: function (){
+	    	alert("An error occured while deleting this country.")
 	    }});
 	return false;
 	});

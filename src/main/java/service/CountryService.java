@@ -41,11 +41,11 @@ public class CountryService {
 		return countrydao.addCountry(c);
 	}
 
-	public void deleteCountry(Country c) {
-		countrydao.deleteCountry(c);
+	public boolean deleteCountry(Country c) {
+		return countrydao.deleteCountry(c);
 	}
 
-	public void updateCountry(Country c,String code) {
-		countrydao.updateCountry(c,code);
+	public boolean updateCountry(Country c,String code) {
+		return countrydao.updateCountry(c,code);
 	}
 }

@@ -2,7 +2,6 @@ package webservices;
 
 import java.util.List;
 
-import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
@@ -15,7 +14,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import model.Country;
@@ -28,8 +26,7 @@ public class CountryRestService {
 
 	@GET
 	@Produces("application/json")
-	public String getCountry(@QueryParam("countryCode") String countryCode) {
-		if (countryCode==null) {
+	public String getCountry() {
 			JsonArrayBuilder jab = Json.createArrayBuilder();
 			for (Country c : service.getAllCountries()) {
 				JsonObjectBuilder job = convertJson(c);
@@ -37,14 +34,18 @@ public class CountryRestService {
 			}
 			JsonArray array = jab.build();
 			return (array.toString());
-		} else {
-			try {
-				Country country = service.getCountryByCode(countryCode);
-				JsonObjectBuilder job = convertJson(country);
-				return (job.build().toString());
-			} catch (Exception e) {
-				return Response.status(404).build().toString();
-			}
+	}
+	
+	@GET
+	@Path("{get_iso2}")
+	@Produces("application/json")
+	public String getCountryByCode(@PathParam("get_iso2") String countryCode) {
+		try {
+			Country country = service.getCountryByCode(countryCode);
+			JsonObjectBuilder job = convertJson(country);
+			return (job.build().toString());
+		} catch (Exception e) {
+			return Response.status(404).build().toString();
 		}
 	}
 
@@ -69,8 +70,7 @@ public class CountryRestService {
 		List<Country> countrylist = service.get10LargestPopulations();
 
 		for (Country c : countrylist) {
-			JsonObjectBuilder job = Json.createObjectBuilder();
-			job.add("name", c.getName());
+			JsonObjectBuilder job = convertJson(c);
 
 			jab.add(job);
 		}
@@ -82,41 +82,47 @@ public class CountryRestService {
 	@POST
 	//@RolesAllowed("user")
 	@Produces("application/json")
-	public String createCountry(@FormParam("iso2") String cd, @FormParam("iso3") String cd2,
+	public Response createCountry(@FormParam("iso2") String cd, @FormParam("iso3") String cd2,
 			@FormParam("name") String nm, @FormParam("cap") String cap) {
 		Country newCountry = new Country(cd, cd2, nm, cap);
-		service.addCountry(newCountry);
-		return Response.ok().build().toString();
+		if (service.addCountry(newCountry)) {
+		return Response.ok().build();
+		}else {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
 	}
 
 	@DELETE
-	@RolesAllowed("user")
-	@Path("{id}")
-	public Response deleteCustomer(@PathParam("id") String code) {
+	@Path("{get_iso3}")
+	public Response deleteCountry(@PathParam("get_iso3") String code) {
 		Country found = null;
-
 		for (Country c : service.getAllCountries()) {
-			if (c.getCode().equals(code)) {
+			if (c.getIso3Code().equals(code)) {
 				found = c;
 				break;
 			}
 		}
-
 		if (found == null) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		} else {
-			service.deleteCountry(found);
+			if (service.deleteCountry(found)) {
 			return Response.ok().build();
+			}else {
+				return Response.status(Response.Status.BAD_REQUEST).build();
+			}
 		}
 	}
 
 	@PUT
 	@Path("{get_iso2}")
-	public String updateCountry(@PathParam("get_iso2") String code,@FormParam("iso2") String cd, @FormParam("iso3") String cd2,
+	public Response updateCountry(@PathParam("get_iso2") String code,@FormParam("iso2") String cd, @FormParam("iso3") String cd2,
 			@FormParam("name") String nm, @FormParam("cap") String cap, @FormParam("population") int pop, @FormParam("region") String region) {
 		Country newCountry = new Country(cd, cd2, nm, cap,pop,region);
-		service.updateCountry(newCountry,code);
-		return Response.ok().build().toString();
+		if (service.updateCountry(newCountry,code)) {
+		return Response.ok().build();
+		}else {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
 	}
 
 	private JsonObjectBuilder convertJson(Country c) {

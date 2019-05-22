@@ -13,7 +13,7 @@ public interface ICountryDAO {
 
 	public boolean addCountry(Country c);
 
-	public void deleteCountry(Country c);
+	public boolean deleteCountry(Country c);
 
-	public void updateCountry(Country c,String ccode);
+	public boolean updateCountry(Country c,String ccode);
 }

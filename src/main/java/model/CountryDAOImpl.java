@@ -9,9 +9,6 @@ import java.util.List;
 
 public class CountryDAOImpl extends BaseDAO implements ICountryDAO {
 
-	public CountryDAOImpl() {
-	}
-
 	public List<Country> getCountries() {
 		ArrayList<Country> countryList = new ArrayList<>();
 		try (Connection conn = super.getConnection();
@@ -86,32 +83,35 @@ public class CountryDAOImpl extends BaseDAO implements ICountryDAO {
 			stmt.setString(2, c.getIso3Code());
 			stmt.setString(3, c.getName());
 			stmt.setString(4, c.getCapital());
+			conn.setAutoCommit(false);
 			stmt.executeUpdate();
 			conn.commit();
 			return true;
-		} catch (Exception e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			System.out.println(e);
 			return false;
 		}
 	}
 
-	public void deleteCountry(Country c) {
+	public boolean deleteCountry(Country c) {
 		try (Connection conn = super.getConnection();
 			PreparedStatement stmt = conn.prepareStatement("delete from country where iso3=?")){
-			stmt.setString(1, c.getCode());
+			stmt.setString(1, c.getIso3Code());
 
-			// Een tweede statement uitvoeren
+			conn.setAutoCommit(false);
 			stmt.executeUpdate();
 			conn.commit();
-		} catch (Exception e) {
+			return true;
+		} catch (SQLException | ClassNotFoundException e) {
 			System.out.println(e);
+			return false;
 		}
 	}
 
-	public void updateCountry(Country c, String ccode) {
+	public boolean updateCountry(Country c, String ccode) {
 		try (Connection conn = super.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(
-					"UPDATE country set code=?,iso3=?,name=?,capital=?,population=?,region=? WHERE code=?")){
+					"UPDATE country SET code=?,iso3=?,name=?,capital=?,population=?,region=? WHERE iso3=?")){
 			stmt.setString(1, c.getCode());
 			stmt.setString(2, c.getIso3Code());
 			stmt.setString(3, c.getName());
@@ -120,11 +120,13 @@ public class CountryDAOImpl extends BaseDAO implements ICountryDAO {
 			stmt.setString(6, c.getRegion());
 			stmt.setString(7, ccode);
 
-			// Een tweede statement uitvoeren
+			conn.setAutoCommit(false);
 			stmt.executeUpdate();
 			conn.commit();
-		} catch (Exception e) {
+			return true;
+		} catch (SQLException | ClassNotFoundException e) {
 			System.out.println(e);
+			return false;
 		}
 	}
 
