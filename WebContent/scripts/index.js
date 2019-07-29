@@ -209,7 +209,8 @@ function openEditModal(code){
 	 myForm['oldIso'].value=country.iso3;
 	 myForm['iso2'].value=country.code;
 	 myForm['iso3'].value=country.iso3;
-	 myForm['name'].value=country.name;
+	 myForm['name'].value=c
+	 ountry.name;
 	 myForm['cap'].value=country.capital;
 	 myForm['region'].value=country.region;
 	 myForm['population'].value=country.population;
